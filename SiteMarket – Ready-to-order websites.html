@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SiteMarket – Ready-to-order websites</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500&display=swap">
+<style>
+:root{--bg:#f6f7fb;--surface:#fff;--ink:#121826;--mute:#5b6478;--line:#e1e4ee;--acc:#2f4bff;--acc-ink:#fff;--tag:#e6ebff;--ok:#0f7b4f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1220;--surface:#171c2e;--ink:#eef0f8;--mute:#9aa3bb;--line:#272d45;--acc:#7d90ff;--acc-ink:#0e1220;--tag:#222a52;--ok:#5fd6a0}}
+:root[data-theme="dark"]{--bg:#0e1220;--surface:#171c2e;--ink:#eef0f8;--mute:#9aa3bb;--line:#272d45;--acc:#7d90ff;--acc-ink:#0e1220;--tag:#222a52;--ok:#5fd6a0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Inter,system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none}
+.logo b{color:var(--acc)}
+nav a{margin-left:20px;text-decoration:none;color:var(--mute);font-weight:500}
+nav a:hover{color:var(--ink)}
+.hero{padding:48px 0 36px}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:800;max-width:14ch;letter-spacing:-.02em}
+.hero p{max-width:52ch;color:var(--mute);font-size:18px;margin:18px 0 28px}
+.search{display:flex;gap:8px;max-width:560px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px}
+.search input{flex:1;border:0;background:none;color:var(--ink);font:inherit;padding:8px 10px;min-width:0}
+.search input:focus{outline:none}
+.search:focus-within{outline:2px solid var(--acc)}
+button,.btn{font:600 15px Inter,sans-serif;background:var(--acc);color:var(--acc-ink);border:0;border-radius:10px;padding:10px 18px;cursor:pointer;text-decoration:none;display:inline-block}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+button.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:26px;color:var(--mute);font-size:14px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:20px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--surface);color:var(--ink);border:1px solid var(--line);padding:7px 14px;border-radius:99px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+select{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{height:140px;padding:16px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+.thumb i{display:block;height:10px;border-radius:5px;background:rgba(255,255,255,.75)}
+.thumb i:nth-child(1){width:40%;height:14px}.thumb i:nth-child(2){width:80%}.thumb i:nth-child(3){width:60%}
+.thumb u{display:block;width:70px;height:22px;border-radius:6px;background:rgba(255,255,255,.95);margin-top:4px}
+.body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body h3{font-size:19px}
+.body p{margin:0;color:var(--mute);font-size:14px;flex:1}
+.meta{display:flex;gap:8px;flex-wrap:wrap;font-size:13px}
+.meta span{background:var(--tag);padding:3px 9px;border-radius:99px}
+.buy{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.price{font:800 24px "Bricolage Grotesque",sans-serif}
+.price small{font:400 13px Inter;color:var(--mute)}
+.empty{padding:40px;text-align:center;color:var(--mute);border:1px dashed var(--line);border-radius:16px}
+section.block{padding:56px 0 8px}
+section.block h2{font-size:clamp(28px,4vw,38px);margin-bottom:22px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:s}
+.steps div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;counter-increment:s}
+.steps div::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--acc);color:var(--acc-ink);font-weight:700;margin-bottom:12px}
+.steps h3{font-size:18px;margin-bottom:6px}.steps p{margin:0;color:var(--mute);font-size:14px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:600}.faq p{margin:10px 0 0;color:var(--mute)}
+footer{margin-top:64px;border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:14px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+dialog{border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);padding:24px;width:min(460px,92vw)}
+dialog::backdrop{background:rgba(10,14,28,.55)}
+dialog h2{font-size:24px;margin-bottom:4px}
+label{display:block;font-weight:500;font-size:14px;margin:14px 0 4px}
+input,textarea{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit}
+.row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+.sum{background:var(--tag);border-radius:10px;padding:10px 12px;font-size:14px;margin-top:10px}
+@media(max-width:560px){nav a:not(:last-child){display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="logo" href="#">Site<b>Market</b></a>
+  <nav><a href="#shop">Websites</a><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="#shop" class="btn" style="color:var(--acc-ink)">Browse</a></nav>
+</header>
+
+<section class="hero">
+  <h1>Pick a website. We build it for you.</h1>
+  <p>Choose a package, tell us about your business, and get a professional website with a clear price and delivery date.</p>
+  <form class="search" id="sf" role="search">
+    <input id="q" type="search" placeholder="Search: shop, restaurant, portfolio…" aria-label="Search websites">
+    <button type="submit">Search</button>
+  </form>
+  <div class="trust"><span>Fixed prices</span><span>Mobile-friendly designs</span><span>Free revisions included</span><span>You own the site</span></div>
+</section>
+
+<section id="shop">
+  <div class="bar">
+    <div class="chips" id="chips"></div>
+    <select id="sort" aria-label="Sort"><option value="pop">Most popular</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="fast">Fastest delivery</option></select>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="block" id="how">
+  <h2>How it works</h2>
+  <div class="steps">
+    <div><h3>Choose a package</h3><p>Pick the website that fits your business and budget.</p></div>
+    <div><h3>Send your details</h3><p>Share your name, logo, texts and photos, or ask us to write them.</p></div>
+    <div><h3>Review the draft</h3><p>You see a working preview and request changes.</p></div>
+    <div><h3>Go live</h3><p>We publish it on your domain and hand it over to you.</p></div>
+  </div>
+</section>
+
+<section class="block faq" id="faq">
+  <h2>Questions</h2>
+  <details><summary>Can I change the design after I order?</summary><p>Yes. Every package includes revision rounds. Extra changes are quoted before we start.</p></details>
+  <details><summary>Do I need my own domain and hosting?</summary><p>No. We can set up both for you. If you already have them, we connect your site to them.</p></details>
+  <details><summary>How do I pay?</summary><p>Half to start, half when you approve the final site. We confirm payment options in your order reply.</p></details>
+  <details><summary>Can you build something custom?</summary><p>Yes. Send a custom request and we reply with a price and timeline.</p></details>
+</section>
+
+<footer><span>© 2026 SiteMarket</span><span>hello@yourdomain.com</span></footer>
+</div>
+
+<dialog id="dlg">
+  <h2>Order this website</h2>
+  <div class="sum" id="sum"></div>
+  <form id="of">
+    <label for="n">Your name</label><input id="n" required>
+    <label for="e">Email</label><input id="e" type="email" required>
+    <label for="d">About your business</label><textarea id="d" rows="3" required placeholder="What do you do? Any colors, examples or deadline?"></textarea>
+    <div class="row"><button type="button" class="ghost" id="cx">Cancel</button><button type="submit">Send order</button></div>
+  </form>
+</dialog>
+
+<script>
+var ITEMS=[
+{id:1,t:"Personal Portfolio",c:"Portfolio",p:75,d:5,pop:9,g:["#2f4bff","#6a7dff"],x:"One-page site to show your work, skills and contact details."},
+{id:2,t:"Business Website",c:"Business",p:150,d:8,pop:10,g:["#0f7b4f","#3fb985"],x:"Up to 5 pages: home, services, about, contact and more."},
+{id:3,t:"Online Store",c:"Store",p:325,d:14,pop:8,g:["#c2410c","#f08a4b"],x:"Product pages, cart and checkout so you can sell online."},
+{id:4,t:"Restaurant & Cafe",c:"Business",p:125,d:7,pop:7,g:["#9d174d","#e0709e"],x:"Menu, opening hours, map and table-booking button."},
+{id:5,t:"Landing Page",c:"Landing",p:50,d:3,pop:9,g:["#6d28d9","#a98af0"],x:"One focused page to promote a product, event or offer."},
+{id:6,t:"Blog & Magazine",c:"Blog",p:100,d:6,pop:5,g:["#0e7490","#4fb8d0"],x:"Clean reading layout, categories and an email signup form."},
+{id:7,t:"Course & Coaching",c:"Business",p:200,d:10,pop:6,g:["#a16207","#e0b341"],x:"Sell lessons, show testimonials and collect bookings."},
+{id:8,t:"Shop Starter",c:"Store",p:175,d:9,pop:6,g:["#334155","#7a8aa3"],x:"Small store for up to 20 products with order by message."}
+];
+var cat="All",term="",grid=document.getElementById("grid"),cur=null;
+var cats=["All"].concat(ITEMS.map(function(i){return i.c}).filter(function(v,i,a){return a.indexOf(v)===i}));
+var chips=document.getElementById("chips");
+cats.forEach(function(c){var b=document.createElement("button");b.className="chip";b.textContent=c;b.setAttribute("aria-pressed",c===cat);b.onclick=function(){cat=c;[].forEach.call(chips.children,function(x){x.setAttribute("aria-pressed",x.textContent===c)});render()};chips.appendChild(b)});
+function esc(s){return String(s).replace(/[&<>"]/g,function(m){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]})}
+function render(){
+  var s=document.getElementById("sort").value;
+  var l=ITEMS.filter(function(i){return(cat==="All"||i.c===cat)&&(i.t+" "+i.x+" "+i.c).toLowerCase().indexOf(term)>-1});
+  l.sort(function(a,b){return s==="lo"?a.p-b.p:s==="hi"?b.p-a.p:s==="fast"?a.d-b.d:b.pop-a.pop});
+  if(!l.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1">No websites match. Try another word, or send a custom request.</div>';return}
+  grid.innerHTML=l.map(function(i){return '<article class="card"><div class="thumb" style="background:linear-gradient(135deg,'+i.g[0]+','+i.g[1]+')"><i></i><i></i><i></i><u></u></div><div class="body"><h3>'+esc(i.t)+'</h3><p>'+esc(i.x)+'</p><div class="meta"><span>'+esc(i.c)+'</span><span>'+i.d+' days</span></div><div class="buy"><div class="price">$'+i.p+'</div><button data-id="'+i.id+'">Order</button></div></div></article>'}).join("");
+}
+grid.onclick=function(e){var id=e.target.getAttribute&&e.target.getAttribute("data-id");if(!id)return;cur=ITEMS.filter(function(i){return i.id==id})[0];document.getElementById("sum").textContent=cur.t+" · $"+cur.p+" · delivery in "+cur.d+" days";document.getElementById("dlg").showModal()};
+document.getElementById("cx").onclick=function(){document.getElementById("dlg").close()};
+document.getElementById("sort").onchange=render;
+document.getElementById("sf").onsubmit=function(e){e.preventDefault();term=document.getElementById("q").value.trim().toLowerCase();render();document.getElementById("shop").scrollIntoView()};
+document.getElementById("of").onsubmit=function(e){e.preventDefault();
+  var body="Package: "+cur.t+" ($"+cur.p+")%0AName: "+encodeURIComponent(document.getElementById("n").value)+"%0AEmail: "+encodeURIComponent(document.getElementById("e").value)+"%0A%0A"+encodeURIComponent(document.getElementById("d").value);
+  location.href="mailto:hello@yourdomain.com?subject="+encodeURIComponent("Website order: "+cur.t)+"&body="+body;
+  document.getElementById("dlg").close()};
+render();
+</script>
+</body>
+</html>
